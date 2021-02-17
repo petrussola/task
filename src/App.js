@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
+const endPoint = process.env.REACT_APP_ENDPOINT;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(endPoint)
+      .then((res) => {
+        const data = res.data.data;
+        const shortData = [];
+        for (let i = 0; i < 11; i++) {
+          shortData.push(data[i]);
+        }
+        setReviews(shortData);
+      })
+      .catch((error) => {
+        debugger;
+      });
+  }, []);
+  return <div className="App">hello</div>;
 }
 
 export default App;
