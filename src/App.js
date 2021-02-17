@@ -1,6 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+// components
+import Reviews from "./Components/Reviews";
+
 const endPoint = process.env.REACT_APP_ENDPOINT;
 
 function App() {
@@ -18,10 +21,15 @@ function App() {
         setReviews(shortData);
       })
       .catch((error) => {
-        debugger;
+        alert(error.message);
       });
   }, []);
-  return <div className="App">hello</div>;
+
+  return (
+    <div className="App">
+      <Reviews reviews={reviews} />
+    </div>
+  );
 }
 
 export default App;
