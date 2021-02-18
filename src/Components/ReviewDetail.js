@@ -40,7 +40,12 @@ export default function ReviewDetail({ review, index }) {
         <p>{review.profile_name}</p>
         <p>{review.review_title}</p>
         <button onClick={toggleModal}>Show Review Text</button>
-        <Link to={`/reviews/${index}`}>
+        <Link
+          to={{
+            pathname: `/reviews/${index}`,
+            state: { review: review, reviewNumber: reviewNumber },
+          }}
+        >
           <button>Show review details</button>
         </Link>
       </StyledDiv>
