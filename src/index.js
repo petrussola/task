@@ -5,12 +5,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { ModalProvider } from "styled-react-modal";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ModalProvider>
-      <App />
-    </ModalProvider>
+    <Router>
+      <ModalProvider>
+        <App />
+      </ModalProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

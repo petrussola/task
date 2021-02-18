@@ -14,7 +14,7 @@ export default function Reviews({ reviews }) {
   return (
     <StyledDiv>
       {reviews.map((review, index) => {
-        return <ReviewDetail key={index} review={review} />;
+        return <ReviewDetail key={index} review={review} index={index} />;
       })}
     </StyledDiv>
   );

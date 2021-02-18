@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Route } from "react-router-dom";
 
 // components
 import Reviews from "./Components/Reviews";
+import ReviewInfo from "./Components/ReviewInfo";
 
 const endPoint = process.env.REACT_APP_ENDPOINT;
 
@@ -27,7 +29,12 @@ function App() {
 
   return (
     <div className="App">
-      <Reviews reviews={reviews} />
+      <Route
+        exact
+        path="/"
+        render={(props) => <Reviews {...props} reviews={reviews} />}
+      />
+      <Route path="/reviews/:id" component={ReviewInfo} />
     </div>
   );
 }

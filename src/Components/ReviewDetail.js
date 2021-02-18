@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Styled from "styled-components";
 import ReactStars from "react-rating-stars-component";
 import Modal from "styled-react-modal";
+import { Link } from "react-router-dom";
 
 const StyledDiv = Styled.div`
     display: flex;
@@ -19,12 +20,16 @@ const StyledModal = Modal.styled`
     background-color: white;
 `;
 
-export default function ReviewDetail({ review }) {
+export default function ReviewDetail({ review, index }) {
   const [isOpen, setIsOpen] = useState(false);
   const reviewNumber = parseInt(review.review_rating[0], 10);
 
   function toggleModal(e) {
     setIsOpen(!isOpen);
+  }
+
+  function reviewDetailsHandle(e) {
+    console.log(index);
   }
 
   return (
@@ -35,7 +40,9 @@ export default function ReviewDetail({ review }) {
         <p>{review.profile_name}</p>
         <p>{review.review_title}</p>
         <button onClick={toggleModal}>Show Review Text</button>
-        <button>Show review details</button>
+        <Link to={`/reviews/${index}`}>
+          <button>Show review details</button>
+        </Link>
       </StyledDiv>
       <StyledModal
         isOpen={isOpen}
